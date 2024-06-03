@@ -24,7 +24,6 @@ const Title = styled.h1`
   font-size: 2.2rem;
   letter-spacing: 6px;
   text-transform: uppercase;
-  color: hsl(0deg, 0%, 95%);
 `;
 
 const Toggle = styled.button`

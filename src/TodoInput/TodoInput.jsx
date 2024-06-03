@@ -18,6 +18,7 @@ function TodoInput({ createTodo }) {
         type="text"
         value={value}
         onChange={(event) => setValue(event.target.value)}
+        required={true}
       />
       <Button>Add</Button>
     </Form>
@@ -29,7 +30,6 @@ const Form = styled.form`
   gap: 22px;
   background-color: var(--very-dark-desaturated-blue);
   padding: var(--y-padding) var(--x-padding);
-  color: hsl(0deg, 0%, 95%);
   border-radius: 6px;
 `;
 
@@ -41,7 +41,7 @@ const TextInput = styled.input`
 
   flex: 1;
   color: inherit;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 
   &:focus {
     outline-offset: 2px;
