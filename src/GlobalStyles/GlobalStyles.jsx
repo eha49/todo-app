@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
+        --weight-light: 300;
         --weight-regular: 400;
         --weight-bold: 700;
 

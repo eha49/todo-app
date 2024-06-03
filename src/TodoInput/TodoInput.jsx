@@ -38,10 +38,10 @@ const TextInput = styled.input`
   border: none;
   border-bottom: 2px solid var(--very-dark-grayish-blue);
   border-radius: 2px;
-
+  font-weight: var(--weight-light);
   flex: 1;
   color: inherit;
-  font-size: 1.1rem;
+  font-size: 1rem;
 
   &:focus {
     outline-offset: 2px;

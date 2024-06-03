@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import { X } from "react-feather";
 
-function TodosItems({ todos, toggleTodo }) {
+function TodosItems({ todos, toggleTodo, removeTodo }) {
   return (
     <ol>
       {todos.map(({ id, isCompleted, value }) => {
@@ -18,7 +19,14 @@ function TodosItems({ todos, toggleTodo }) {
             <Label htmlFor={id} $isCompleted={isCompleted}>
               {value}
             </Label>
-            <Remove strokeWidth={1} size={26} strokeOpacity={0.7} />
+            <Button
+              onClick={() => {
+                removeTodo(id);
+              }}
+            >
+              <X strokeWidth={2.5} size={26} />
+              <VisuallyHidden>Remove Todo</VisuallyHidden>
+            </Button>
           </ListItem>
         );
       })}
@@ -27,11 +35,13 @@ function TodosItems({ todos, toggleTodo }) {
 }
 
 const ListItem = styled.li`
+  position: relative;
   display: flex;
   gap: 12px;
   align-items: center;
   padding: 14px var(--x-padding);
   border-bottom: 1px solid var(--very-dark-grayish-blue);
+  font-weight: var(--weight-light);
 `;
 
 const Checkbox = styled.input`
@@ -50,9 +60,14 @@ const Label = styled.label`
   text-decoration-thickness: 2px;
 `;
 
-const Remove = styled(X)`
-  margin-top: -1px;
-  margin-left: auto;
+const Button = styled.button`
+  position: absolute;
+  color: var(--very-dark-grayish-blue);
+  right: var(--x-padding);
+  top: calc(var(--y-padding) + 3px);
+  padding: 0;
+  border: none;
+  background: none;
   display: none;
   cursor: pointer;
 

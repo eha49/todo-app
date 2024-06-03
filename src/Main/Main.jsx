@@ -28,6 +28,12 @@ function reducer(todos, action) {
         };
       });
     }
+
+    case "remove-todo": {
+      return todos.filter((todo) => {
+        return todo.id !== action.id;
+      });
+    }
   }
 }
 
@@ -49,6 +55,13 @@ function Main() {
       id,
     });
   }
+
+  function removeTodo(id) {
+    dispatch({
+      type: "remove-todo",
+      id,
+    });
+  }
   return (
     <MaxWidthWrapper>
       <Header />
@@ -56,7 +69,11 @@ function Main() {
       <TodoInput createTodo={createTodo} />
       <Spacer $height={15} />
       <TodosWrapper>
-        <TodoItems todos={todos} toggleTodo={toggleTodo} />
+        <TodoItems
+          todos={todos}
+          toggleTodo={toggleTodo}
+          removeTodo={removeTodo}
+        />
       </TodosWrapper>
     </MaxWidthWrapper>
   );
