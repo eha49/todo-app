@@ -7,7 +7,7 @@ function TodosItems({ todos, toggleTodo, removeTodo }) {
     <ol>
       {todos.map(({ id, isCompleted, value }) => {
         return (
-          <ListItem key={id}>
+          <ListItem key={id} $isCompleted={isCompleted}>
             <Checkbox
               id={id}
               type="checkbox"
@@ -42,6 +42,8 @@ const ListItem = styled.li`
   padding: 14px var(--x-padding);
   border-bottom: 1px solid var(--very-dark-grayish-blue);
   font-weight: var(--weight-light);
+  font-weight: ${(props) =>
+    props.$isCompleted && "var(--weight-regular)"};
 `;
 
 const Checkbox = styled.input`
