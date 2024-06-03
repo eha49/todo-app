@@ -8,12 +8,12 @@ function reducer(todos, action) {
   switch (action.type) {
     case "create-todo": {
       return [
-        ...todos,
         {
           value: action.value,
           id: action.id,
           isCompleted: action.isCompleted,
         },
+        ...todos,
       ];
     }
     case "toggle-todo": {

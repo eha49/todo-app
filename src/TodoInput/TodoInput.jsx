@@ -36,7 +36,7 @@ const Form = styled.form`
 const TextInput = styled.input`
   background-color: inherit;
   border: none;
-  border-bottom: 2px solid hsl(235deg, 24%, 30%);
+  border-bottom: 2px solid var(--very-dark-grayish-blue);
   border-radius: 2px;
 
   flex: 1;
@@ -49,12 +49,13 @@ const TextInput = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: hsl(235deg, 24%, 30%);
+  background-color: var(--very-dark-grayish-blue);
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   color: inherit;
+  cursor: pointer;
 `;
 
 export default TodoInput;
