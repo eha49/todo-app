@@ -36,10 +36,10 @@ const GlobalStyles = createGlobalStyle`
         --very-dark-blue: hsl(235deg, 21%, 11%);
         --very-dark-desaturated-blue: hsl(235deg, 24%, 19%);
         --light-grayish-blue: hsl(234deg, 39%, 85%);
-        --light-grayish-blu-hover:  hsl(236deg, 33%, 92%);
-        --dark-grayish-blue:  hsl(234deg, 11%, 52%);
-        --very-dark-grayish-blue:  hsl(233deg, 14%, 35%);
-        --very-dark-grayish-blue:  hsl(237deg, 14%, 26%);
+        --light-grayish-blue-hover: hsl(236deg, 33%, 92%);
+        --dark-grayish-blue: hsl(234deg, 11%, 52%);
+        --very-dark-grayish-blue: hsl(233deg, 14%, 35%);
+        --very-dark-grayish-blue-hover: hsl(237deg, 14%, 26%);
      }
 
      body {
