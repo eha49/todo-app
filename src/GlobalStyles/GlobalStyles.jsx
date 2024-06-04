@@ -26,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
         --weight-bold: 700;
 
         --bright-blue:  hsl(220deg, 98%, 61%);
-        --gradient:  linear-gradient(180deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+        --gradient:  linear-gradient(110deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
 
         --very-light-gray: hsl(0deg, 0%, 98%);
         --very-light-grayish-blue: hsl(236deg, 33%, 92%);

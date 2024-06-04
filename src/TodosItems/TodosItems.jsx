@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
-import { X } from "react-feather";
+import { X, Check } from "react-feather";
 
 function TodosItems({ todos, toggleTodo, removeTodo }) {
   return (
@@ -8,14 +8,19 @@ function TodosItems({ todos, toggleTodo, removeTodo }) {
       {todos.map(({ id, isCompleted, value }) => {
         return (
           <ListItem key={id} $isCompleted={isCompleted}>
-            <Checkbox
-              id={id}
-              type="checkbox"
-              checked={isCompleted}
-              onChange={() => {
-                toggleTodo(id);
-              }}
-            />
+            <CheckboxContainer>
+              <Checkbox
+                id={id}
+                type="checkbox"
+                checked={isCompleted}
+                onChange={() => {
+                  toggleTodo(id);
+                }}
+              />
+              <PresentationalCheckbox>
+                <CustomCheck strokeWidth={5} size={10} />
+              </PresentationalCheckbox>
+            </CheckboxContainer>
             <Label htmlFor={id} $isCompleted={isCompleted}>
               {value}
             </Label>
@@ -46,17 +51,47 @@ const ListItem = styled.li`
     props.$isCompleted && "var(--weight-regular)"};
 `;
 
+const CheckboxContainer = styled.div`
+  position: relative;
+`;
+
 const Checkbox = styled.input`
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;
+`;
+
+const PresentationalCheckbox = styled.div`
   width: 18px;
   height: 18px;
-  cursor: pointer;
-  clip-path: circle(47% at 50% 50%);
+  border: 1px solid var(--very-dark-grayish-blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${Checkbox}:checked + & {
+    background: var(--gradient);
+  }
+
+  ${Checkbox}:hover + &,
+  ${Checkbox}:focus-visible + & {
+    border: 2px solid var(--bright-blue);
+  }
+`;
+
+const CustomCheck = styled(Check)`
+  display: none;
+  ${Checkbox}:checked ~ ${PresentationalCheckbox} & {
+    display: revert;
+  }
 `;
 
 const Label = styled.label`
   color: inherit;
   font-size: 1rem;
-  margin-top: 4px;
+  margin-top: 3px;
   text-decoration: ${(props) => props.$isCompleted && "line-through"};
   color: ${(props) =>
     props.$isCompleted && "var(--dark-grayish-blue)"};
