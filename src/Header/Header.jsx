@@ -1,14 +1,25 @@
+import React from "react";
 import styled from "styled-components";
+import { AppThemeContext } from "../AppThemeProvider/AppThemeProvider";
 
 function Header() {
+  const { isDark, toggleTheme } = React.useContext(AppThemeContext);
   return (
     <Nav>
       <Title>Todo</Title>
-      <Toggle>
-        <Icon
-          src="../../src/assets/images/icon-sun.svg"
-          alt="moon icon"
-        />
+      <Toggle onClick={toggleTheme}>
+        {isDark && (
+          <Icon
+            src="../../src/assets/images/icon-sun.svg"
+            alt="moon icon"
+          />
+        )}
+        {!isDark && (
+          <Icon
+            src="../../src/assets/images/icon-moon.svg"
+            alt="moon icon"
+          />
+        )}
       </Toggle>
     </Nav>
   );
@@ -36,7 +47,7 @@ const Toggle = styled.button`
 
 const Icon = styled.img`
   display: block;
-  width: 22px;
+  width: 18px;
 `;
 
 export default Header;

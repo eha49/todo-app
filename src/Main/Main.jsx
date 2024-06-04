@@ -33,6 +33,9 @@ function reducer(todos, action) {
         return todo.id !== action.id;
       });
     }
+    case "clear-todo": {
+      return todos.filter((todo) => !todo.isCompleted);
+    }
   }
 }
 
@@ -42,6 +45,12 @@ function Main() {
   const pendingTodosArr = React.useMemo(() => {
     return todos.filter((todo) => {
       return !todo.isCompleted;
+    });
+  }, [todos]);
+
+  const completedTodosArr = React.useMemo(() => {
+    return todos.filter((todo) => {
+      return todo.isCompleted;
     });
   }, [todos]);
 
@@ -86,7 +95,12 @@ function Main() {
               {pendingTodosArr.length !== 1 &&
                 `${pendingTodosArr.length} items left`}
             </span>
-            <ClearCompletedButton>
+            <ClearCompletedButton
+              onClick={() => {
+                dispatch({ type: "clear-todo" });
+              }}
+              disabled={!completedTodosArr.length}
+            >
               Clear Completed
             </ClearCompletedButton>
           </TodoControls>
@@ -99,13 +113,12 @@ function Main() {
 const MaxWidthWrapper = styled.div`
   --y-padding: 10px;
   --x-padding: 22px;
-  border: 2px solid white;
   position: fixed;
   top: 5%;
   left: 0;
   right: 0;
   width: 450px;
-  max-width: 85%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   min-height: 500px;
@@ -141,7 +154,11 @@ const ClearCompletedButton = styled.button`
   color: inherit;
   cursor: pointer;
 
-  &:hover {
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
     color: hsl(0deg, 0%, 95%);
   }
 `;

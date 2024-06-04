@@ -1,11 +1,25 @@
+import React from "react";
 import styled from "styled-components";
+import { AppThemeContext } from "../AppThemeProvider/AppThemeProvider";
 
 function Banner() {
+  const { isDark } = React.useContext(AppThemeContext);
+
   return (
-    <BannerImage
-      src="../../src/assets/images/bg-desktop-dark.jpg"
-      alt="banner image"
-    />
+    <>
+      {isDark && (
+        <BannerImage
+          src="../../src/assets/images/bg-desktop-dark.jpg"
+          alt="banner image"
+        />
+      )}
+      {!isDark && (
+        <BannerImage
+          src="../../src/assets/images/bg-desktop-light.jpg"
+          alt="banner image"
+        />
+      )}
+    </>
   );
 }
 
