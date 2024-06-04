@@ -43,6 +43,9 @@ const TextInput = styled.input`
   color: inherit;
   font-size: 1rem;
 
+  /* overwriting the default min-width for inputs - here used to allow the shrinking at smaller screen sizes */
+  min-width: 0;
+
   &:focus {
     outline-offset: 2px;
   }

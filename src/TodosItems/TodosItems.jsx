@@ -24,7 +24,7 @@ function TodosItems({ todos, toggleTodo, removeTodo }) {
                 removeTodo(id);
               }}
             >
-              <X strokeWidth={2.5} size={26} />
+              <X strokeWidth={2} size={26} />
               <VisuallyHidden>Remove Todo</VisuallyHidden>
             </Button>
           </ListItem>
@@ -49,6 +49,7 @@ const ListItem = styled.li`
 const Checkbox = styled.input`
   width: 18px;
   height: 18px;
+  cursor: pointer;
   clip-path: circle(47% at 50% 50%);
 `;
 
@@ -58,23 +59,27 @@ const Label = styled.label`
   margin-top: 4px;
   text-decoration: ${(props) => props.$isCompleted && "line-through"};
   color: ${(props) =>
-    props.$isCompleted && "var(--very-dark-grayish-blue)"};
+    props.$isCompleted && "var(--dark-grayish-blue)"};
   text-decoration-thickness: 2px;
+  cursor: pointer;
 `;
 
 const Button = styled.button`
   position: absolute;
-  color: var(--very-dark-grayish-blue);
+  color: var(--dark-grayish-blue);
   right: var(--x-padding);
   top: calc(var(--y-padding) + 3px);
   padding: 0;
   border: none;
   background: none;
-  display: none;
   cursor: pointer;
 
-  ${ListItem}:hover & {
-    display: revert;
+  @media ((hover: hover) and (pointer: fine)) {
+    display: none;
+
+    ${ListItem}:hover & {
+      display: revert;
+    }
   }
 `;
 export default TodosItems;
